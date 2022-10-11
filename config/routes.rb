@@ -1,16 +1,19 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
-  resources :users
   resources :disease_fields, only: [:create]
   resources :fields, only: [:index, :show]
-  resources :diseases, only: [:index, :show]
+  resources :diseases, only:[:index, :show]
   
   resources :likes
   resources :comments
   resources :user_posts, only: [:create, :update]
   resources :posts
 
+
+  get 'normal_users', to: "users#users_index"
+  get 'professionals', to: "users#professionals_index"
+  get 'normal_users/:id', to: "users#users_show"
+  get 'professionals/:id', to: "users#professionals_show"
+  post 'users', to: "users#create"
+  patch 'normal_users/:id', to: "users#update_users"
+  patch 'normal_users/upgrade/:id', to: "users#upgrade"
 end
