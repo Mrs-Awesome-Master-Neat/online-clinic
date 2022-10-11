@@ -22,14 +22,17 @@ class UsersController < ApplicationController
         user=MedicalProfessionalUser.find_by!(id: params[:id])
     end
 
-    def update
+    def update_users
+        user=NormalUser.find_by!(id: params[:id])
+        user.update!(all_params)
+        render json: user, status: :accepted
     end
 
     def upgrade
         user=NormalUser.find_by!(id: session[:user_id])
         user=user.becomes(MedicalProfessionalUser)
         user.type="MedicalProfessional"
-        user.update!(professionals_params)
+        user.update!(all_params)
 
         render json: user, status: :accepted
     end
@@ -48,7 +51,7 @@ class UsersController < ApplicationController
         :gender, :email,:user_name,:password,:password_confirmation
     end
 
-    def professionals_params
+    def all_params
         params.permit :profession, :started_work,:place_of_work,:first_name, :last_name, :date_of_birth, 
         :gender, :email,:user_name,:password,:password_confirmation
     end

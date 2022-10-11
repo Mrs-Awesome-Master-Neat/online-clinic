@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get 'normal_users/:id', to: "users#users_show"
   get 'professionals/:id', to: "users#professionals_show"
   post 'users', to: "users#create"
-  patch 'normal_users', to: "users#update_users"
-  patch 'professionals', to: "users#update_professionals"
-  patch 'users/upgrade', to: "users#upgrade"
+  patch 'normal_users/:id', to: "users#update_users"
+  patch 'normal_users/upgrade/:id', to: "users#upgrade"
 end
