@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   resources :disease_fields, only: [:create]
   resources :fields, only: [:index, :show]
   resources :diseases, only:[:index, :show]
+  
+  resources :likes
+  resources :comments
+  resources :user_posts, only: [:create, :update]
+  resources :posts
+
 
   get 'normal_users', to: "users#users_index"
   get 'professionals', to: "users#professionals_index"
