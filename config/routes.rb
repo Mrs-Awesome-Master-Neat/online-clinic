@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :diseases, only:[:index, :show]
 
   get 'normal_users', to: "users#users_index"
-  get 'professionals', to: "users#professionals#index"
+  get 'professionals', to: "users#professionals_index"
   get 'normal_users/:id', to: "users#users_show"
   get 'professionals/:id', to: "users#professionals_show"
   post 'users', to: "users#create"
