@@ -49,3 +49,8 @@ end
 #for active model serializer
 gem 'active_model_serializers', '~> 0.10.13'
 
+#faker gem
+gem 'faker', '~> 2.3'
+
+#sophisticated and secure hash algorithm designed by The OpenBSD project for hashing passwords.
+gem 'bcrypt', '~> 3.1', '>= 3.1.18'
