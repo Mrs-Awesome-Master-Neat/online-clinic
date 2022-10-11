@@ -1,0 +1,2 @@
+class DiseaseFieldsController < ApplicationController
+end
