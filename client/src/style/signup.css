@@ -35,7 +35,7 @@
     background-color: rgb(234, 236, 239);
     border-top-left-radius: 100px;
     margin-bottom: 0;
-    opacity: .7;
+    opacity: .8;
     
     
 }
@@ -48,12 +48,13 @@
     border: 0;
     cursor: pointer;
     color: white;
-    background-color: rgb(26, 48, 216);
+    background-color: rgb(22, 47, 236);
     margin-bottom: 20px;
+    box-shadow: inset 0 0 20px #0c0b0c;
 
 }
 .signupbutton:hover{
-    background-color: rgb(21, 160, 240);
+    background-color: rgb(27, 128, 186);
 }
 input{
     width: 400px;
@@ -69,6 +70,7 @@ input{
     z-index: -1;
     object-fit: cover;
     position: fixed;
+    filter: contrast(0.8);
    
 }
 label{
