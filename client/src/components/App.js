@@ -18,6 +18,7 @@ function App() {
         <Route exact path={"/"}>
           {/* create a button here to route to your component */}
           <button onClick={() => history.push("login")}>Login</button>
+          
           <button onClick={() => history.push("signup")}>Signup</button>
         </Route>
       </Switch>

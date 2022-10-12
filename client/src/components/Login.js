@@ -4,14 +4,14 @@ export default function Login(){
     return (
         <div className="login">
             <div>
-                <img src="" alt=""/>
+                <img src="" alt="loginpic"/>
             </div>
             <div>
                 <p>Login</p>
                 <form className="login-form">
                     <label>Email</label>
                     <input id="email" type="text"/>
-                    
+
                     <label>Password</label>
                     <input id="password" type="text" />
 
