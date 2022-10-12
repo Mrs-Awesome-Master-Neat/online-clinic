@@ -1,9 +1,56 @@
 .login{
-    font-family: "Noto Sans",sans-serif
+    font-family: "Noto Sans",sans-serif;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding-top: 0;
+   
+    
+   
 }
-
+input{
+    width: 400px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid;
+    padding-bottom: 5px;
+    margin-bottom: 10px;    
+}
 .login-form{
+    
     display: flex;
     flex-direction: column;
-    text-align: left;
+    margin-left: 30px;
+    padding-top: 50px;
+    align-items: center;
+    margin-top: 0;
+    
 }
+.form{
+    background-color: rgb(234, 236, 239);
+    border-top-left-radius: 100px;
+    margin-bottom: 0;
+   
+}
+.loginbutton{
+    margin-top: 20px;
+    width: 100px;
+    height: 35px;
+    border-radius: 15px;
+    border: 0;
+    cursor: pointer;
+    color: white;
+    background-color: rgb(26, 48, 216);
+    margin-bottom: 20px;
+}
+img{
+    width: 100%; 
+    height: 100vh;
+    z-index: -1;
+    object-fit: cover;
+    
+}
+
