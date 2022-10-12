@@ -1,6 +1,6 @@
 import React from "react"
 import "../style/login.css"
-import image1 from "../images/hearth.png"
+import image1 from "../images/adult.jpg"
 
 
 export default function Login() {
