@@ -11,6 +11,7 @@ export default function Login(){
                 <form className="login-form">
                     <label>Email</label>
                     <input id="email" type="text"/>
+                    
                     <label>Password</label>
                     <input id="password" type="text" />
 
