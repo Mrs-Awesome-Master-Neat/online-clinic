@@ -1,0 +1,9 @@
+.login{
+    font-family: "Noto Sans",sans-serif
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}

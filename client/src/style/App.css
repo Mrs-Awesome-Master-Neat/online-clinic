@@ -1,26 +1,5 @@
-*{
-  margin: 0;
-  padding: 0;
-}
-.container {
-  background: linear-gradient(135dg, purple, maroon);
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-}
-.app-wrapper {
-  background-color: white;
-  min-width: 350px;
-  min-height: 650px;
-  padding: 30px;
-  box-sizing: border-box;
-  border-radius: 5px;
-}
-.title {
-  color: #f80759;
+@import url('https://fonts.googleapis.com/css2?family=Changa:wght@200;400&family=Fira+Code:wght@300;400&family=Noto+Sans:wght@300;400;500;600&family=Roboto+Mono:wght@200&display=swap');
+.App {
   text-align: center;
   margin: 80px 0px 40px 0px;
 
