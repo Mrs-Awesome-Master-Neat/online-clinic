@@ -1,5 +1,11 @@
+import { useState } from "react"
 import "../style/post.css"
 export default function Post() {
+    const[liked,setLiked]=useState(false)
+
+    function handleLikeClick(){
+        setLiked(like => !like)
+    }
     return (
         <div className="post">
             <div className="main-details">
@@ -28,7 +34,7 @@ export default function Post() {
                     <p className="post-counts">20</p>
                 </div>
                 <div>
-                    <img src="/icons/like.svg" id="post-like" alt="" className="post-icons" />
+                    <img onClick={handleLikeClick} src={`/icons/like${liked?"2":""}.svg`} id="post-like" alt="" className="post-icons" />
                     <p className="post-counts">130</p>
                 </div>
             </div>
