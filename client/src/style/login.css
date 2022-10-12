@@ -58,14 +58,14 @@ input{
 
 @keyframes float {
     0% {
-        transform: translateY(10px);
+        transform: translateY(5px);
         
     }
     50%{
-        transform: translateY(-30px);
+        transform: translateY(-20px);
     }
     100%{
-        transform: translateY(10px);
+        transform: translateY(5px);
     }
 }
 img{
@@ -92,4 +92,11 @@ label{
     animation: float 3.5s ease-in-out infinite;
     
 }
+.welcome::after{
+    content: "\01F601";
+}
+.welcome::before {
+    content: "HEY ! \01F44B";
+}
+
 

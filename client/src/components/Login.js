@@ -9,17 +9,17 @@ export default function Login() {
 
             <img className="image" src={image1} alt="loginpic" />
             <div>
-                <h1 className="welcome"><b>WELCOME BACK!</b></h1>
-                <h2><b>Log In</b></h2>
+                <h1 className="welcome"><b> WELCOME BACK!</b></h1>
+                <h2><b> Log In</b></h2>
             </div>
             <div className="formlog">
 
                 <form className="login-form">
                     <label><b>Email</b></label>
-                    <input id="email" type="text" />
+                    <input id="email" type="text" placeholder="Enter your email address..."/>
 
                     <label><b>Password</b></label>
-                    <input id="password" type="text" />
+                    <input id="password" type="text" placeholder="Enter your password..." />
 
                     <button className="loginbutton"><b>LOG IN</b></button>
                 </form>

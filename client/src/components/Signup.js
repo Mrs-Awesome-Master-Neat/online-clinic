@@ -16,19 +16,19 @@ function Signup() {
                 
                 <form className="signup-form">
                     <label><b>First Name</b></label>
-                    <input id="fname" type="text"></input>
+                    <input id="fname" type="text" placeholder="Enter your first name..."></input>
 
                     <label><b>Last Name</b></label>
-                    <input id="lname" type="text"></input>
+                    <input id="lname" type="text" placeholder="Enter your last name..."></input>
 
                     <label><b>Email</b></label>
-                    <input id="email" type="text"></input>
+                    <input id="email" type="text" placeholder="Enter your email address..."></input>
 
                     <label><b>Password</b></label>
-                    <input id="password" type="text"></input>
+                    <input id="password" type="text" placeholder="Enter your password..."></input>
 
                     <label><b>Confirm Password</b></label>
-                    <input id="confirmpass" type="text"></input>
+                    <input id="confirmpass" type="text" placeholder="Confirm password..."></input>
 
                     <button className="signupbutton"><b>SIGN UP</b></button>
                 </form>
