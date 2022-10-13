@@ -2,7 +2,7 @@ import '../style/App.css';
 import { Switch, Route, useHistory } from 'react-router-dom';
 import Login from "./Login";
 import Dashboard from './DashBoard';
-import Signup from './Signup';
+import Signup from './Signup'
 
 function App() {
   const history = useHistory()
