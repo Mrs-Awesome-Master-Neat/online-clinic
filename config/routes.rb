@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :user_posts, only: [:create, :update]
   resources :posts
 
+  post 'sessions', to: "session#create"
+
 
   get 'normal_users', to: "users#users_index"
   get 'professionals', to: "users#professionals_index"
