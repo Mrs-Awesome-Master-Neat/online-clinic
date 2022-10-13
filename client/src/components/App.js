@@ -3,7 +3,7 @@ import { Switch, Route, useHistory } from 'react-router-dom';
 import Login from "./Login";
 import Dashboard from './DashBoard';
 import Signup from './Signup';
-import Profile from './Profile';
+
 
 function App() {
   const history = useHistory()
@@ -20,9 +20,7 @@ function App() {
         <Route path={"/dashboard"}>
           <Dashboard/>
         </Route>
-        <Route path={"/profile"}>
-          <Profile/>
-        </Route>
+        
 
         <Route exact path={"/"}>
           {/* create a button here to route to your component */}
@@ -30,7 +28,7 @@ function App() {
 
           <button onClick={() => history.push("signup")}>Sign Up</button>
           <button onClick={() => history.push("dashboard")}>dashboard</button>
-          <button onClick={() => history.push("profile")}>Profile</button>
+          
           
         </Route>
       </Switch>
