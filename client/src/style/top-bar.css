@@ -1,0 +1,93 @@
+.top-bar {
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    background: #e0e0e0;
+    box-shadow: 5px 5px 10px #808080,
+        -5px -5px 10px #ffffff;
+}
+
+.logo-div {
+    display: flex;
+    align-items: center;
+}
+
+.logo-div img {
+    height: 45px;
+}
+
+.search-form {
+    width: 200px;
+    background: #fffcfc;
+    align-items: center;
+    display: flex;
+    border-radius: 25px;
+    height: 35px;
+}
+
+.search-form input {
+    width: 70%;
+    border: none;
+    outline: none;
+    height: 30px;
+    background: transparent;
+    margin-left: 15px;
+    font-size: 14px;
+    font-family: "Noto Sans", sans-serif;
+
+}
+
+.search-form button {
+    border: none;
+    width: 30px;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+    margin-right: 5px;
+
+}
+
+.bar-profile {
+    display: flex;
+    align-items: center;
+}
+
+.bar-profile img {
+    height: 40px;
+    border-radius: 50%;
+}
+
+.top-name {
+    margin: 5px 10px -13px;
+}
+
+.top-username {
+    font-size: 14px;
+    color: #747474;
+}
+
+.top-bar p {
+    display: none;
+}
+
+.top-title {
+    font-size: 22px;
+}
+
+@media only screen and (min-width:600px) {
+    .top-bar p {
+        display: block;
+    }
+    .search-form{
+        width: 350px;
+        height: 50px;
+    }
+    .search-form input{
+        width: 280px;
+        height: 35px;
+        font-size: 16px;
+    }
+}
