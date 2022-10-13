@@ -32,7 +32,7 @@
 }
 
 .homelink{
-    color: black;
+   color: black;
     text-decoration: none; 
 }
 
@@ -63,6 +63,6 @@
     }
 
     .navbar img {
-        margin: 20px 30px 20px 15px;
+        margin: 20px 30px 15px 15px;
     }
 }

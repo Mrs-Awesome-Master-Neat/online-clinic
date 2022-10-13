@@ -9,7 +9,7 @@ export default function NavBar() {
             
             
             <div>
-                <img src="/icons/home.png" alt="" />
+                <NavLink activeClassName='is-active' to="/dashboard" ><img src="/icons/home.png" alt="" /></NavLink>
                 <p className='nav-text'>
                     <NavLink className="homelink" activeClassName='is-active' to="/dashboard">
                     Home </NavLink></p>
@@ -28,15 +28,10 @@ export default function NavBar() {
                 <p className='nav-text'>My Posts</p>
             </div>
             <div>
-                
-                <img src="/icons/prof-edit.png" alt="" />
-                <p className='nav-text'>
-                    <NavLink className="profilelink" activeClassName='is-active' to="/dashboard/profile">
-                    Profile </NavLink></p> 
-                
-                
+            <NavLink activeClassName='is-active' to="/dashboard/profile"><img src="/icons/prof-edit.png" alt="" /></NavLink>
+            <NavLink className="profilelink" activeClassName='is-active' to="/dashboard/profile">
+            <p className='nav-text'>Profile </p></NavLink> 
             </div>
-            
         </div>
     );
 }
