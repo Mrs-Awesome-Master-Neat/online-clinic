@@ -1,5 +1,5 @@
-import { useState } from "react"
-import "../style/post.css"
+import { useState } from "react";
+import "../style/post.css";
 export default function Post() {
     const[liked,setLiked]=useState(false)
 

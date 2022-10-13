@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../style/login.css";
-import image1 from "../images/adult.jpg"
+import image1 from "../images/adult.jpg";
 
 
 export default function Login({onLogin}) {

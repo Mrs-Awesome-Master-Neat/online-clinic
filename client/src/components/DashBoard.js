@@ -1,6 +1,6 @@
 import NavBar from "./NavBar";
 import Post from "./Post";
-import "../style/dashboard.css"
+import "../style/dashboard.css";
 import { useState } from "react";
 import TopBar from "./TopBar";
 import Discover from "./Discover";
