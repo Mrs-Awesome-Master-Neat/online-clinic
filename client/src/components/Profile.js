@@ -7,28 +7,17 @@ function Profile() {
         <div className="profile">
             <img className="image" width="70" height="70" src={image2} alt="avatar" />
             <div className="username-details">
-                <h1>Oscar Otee</h1>
-                <h3>@oscar_otee</h3>
+                <h1 className="nameheader">Oscar Otee</h1>
+                <h3 className="usernameheader">@oscar_otee</h3>
+                <h2>Details :</h2>
                 <div className="user-details">
-                    <h2>Details:</h2>
-                    
+                    <p><b>Profession :</b> Cancer Specialist</p>
+                    <p><b>Email Address : </b>oscarotee@gmail.com</p>
+                    <p><b>Place of work : </b> Johns Hopkins Hospital</p>
+                    <p><b>Started Work : </b> 19/01/2001 </p>
+                    <p><b>Date of birth :</b> 3/04/1975 </p>
+                    <p><b>Gender :</b> Male </p>
                 </div>
-                <label><b>Profession :</b></label>
-                
-                <p class="title">Cancer Specialist</p>
-                <label><b>Email Address : </b></label>
-
-                <label><b>Place of work : </b></label>
-
-                <p>Johns Hopkins Hospital</p>
-                <label><b>Started Work : </b></label>
-                <label><b>Date of birth :</b></label>
-                <label><b>Gender :</b></label>
-
-
-                
-
-
             </div>
         </div>
     )
