@@ -34,5 +34,5 @@ export default function Dashboard() {
                 {isDesktop ? <Discover/>: <NavBar />}
             </div>
         </div>
-    )
+    );
 }
