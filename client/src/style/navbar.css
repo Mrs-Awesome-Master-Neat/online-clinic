@@ -2,7 +2,8 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background: #e0e0e0;;
+    background: #e0e0e0;
+    ;
     bottom: 0;
     z-index: 2;
     position: fixed;
@@ -22,6 +23,21 @@
     cursor: pointer;
 }
 
+.navbar .active img {
+    height: 35px;
+}
+
+
+.navbar .active {
+    background: #868585;
+    border-radius: 0px;
+    border-radius: 0px;
+background: #f1e7e7;
+box-shadow:  5px 5px 10px #aaa8a8,
+             -5px -5px 10px #edebeb;
+    padding: 4px 8px;
+}
+
 .nav-text {
     display: none;
 }
@@ -39,8 +55,23 @@
 @media only screen and (min-width:600px) {
     .nav-text {
         display: block;
-        font-size: 23px;
+        font-size: 20px;
         cursor: pointer;
+    }
+
+    .active .nav-text {
+        font-weight: 800;
+        font-size: 25px;
+    }
+
+    .navbar .active {
+        width: 100%;
+        background: #dbdada;
+        background: #dbdada;
+box-shadow: 8px 8px 17px #bfbebe,
+    -8px -8px 17px #f7f6f6;
+    padding: 0px;
+
     }
 
     .navbar {
@@ -54,7 +85,7 @@
         height: auto;
         width: 250px;
         align-items: flex-start;
-        height: 60vh;
+        height: 400px;
         margin: 30px 0;
         border-radius: 0px;
         background: #e0e0e0;

@@ -3,13 +3,15 @@ import "../style/login.css";
 import image1 from "../images/adult.jpg"
 
 
-export default function Login() {
+export default function Login({onLogin}) {
+    const [errors,setErrors]=useState(null)
     const [loginDetails,setLoginDetails]=useState({
         user_details: "",
         password:""
     })
     function handleLogin(e){
         e.preventDefault()
+        console.log(loginDetails)
         fetch("/sessions",{
             method: "POST",
             headers:{
@@ -17,9 +19,12 @@ export default function Login() {
             },
             body: JSON.stringify(loginDetails)
         }).then(res=>{
-            res.json()
+           if(res.ok){
+            res.json().then(onLogin)
+           }else{
+            res.json().then(setErrors)
+           }
         })
-        .then(console.log)
     }
     return (
         <div className="login">
