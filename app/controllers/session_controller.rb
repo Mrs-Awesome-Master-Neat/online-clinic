@@ -7,7 +7,11 @@ class SessionController < ApplicationController
             session[:user_id] = user.id
             render json: user, status: :ok
         else
-            render json: {}, status: :unauthorized
+            render json: {error: "Not authorized"}, status: :unauthorized
         end
+    end
+    
+    def destroy
+        
     end
 end
