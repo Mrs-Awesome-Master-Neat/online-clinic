@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import "../style/login.css";
 import image1 from "../images/adult.jpg"
 
 
 export default function Login() {
+    const [loginDetails,setLoginDetails]=useState({
+        user_details: "",
+        password:""
+    })
+    function handleLogin(e){
+        e.preventDefault()
+        fetch("/sessions",{
+            method: "POST",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(loginDetails)
+        }).then(res=>{
+            res.json()
+        })
+        .then(console.log)
+    }
     return (
         <div className="login">
 
@@ -14,12 +31,16 @@ export default function Login() {
             </div>
             <div className="formlog">
 
-                <form className="login-form">
-                    <label><b>Email</b></label>
-                    <input id="email" type="text" placeholder="Enter your email address..."/>
+                <form className="login-form" onSubmit={handleLogin}>
+                    <label><b>Email/username</b></label>
+                    <input id="email" type="text" 
+                    onChange={(e)=>setLoginDetails(details=>({...details,user_details:e.target.value}))} 
+                    value={loginDetails.user_details} placeholder="Enter your email or username..."/>
 
                     <label><b>Password</b></label>
-                    <input id="password" type="text" placeholder="Enter your password..." />
+                    <input id="password" type="password" 
+                    onChange={(e)=>setLoginDetails(details=>({...details,password:e.target.value}))} 
+                    value={loginDetails.password} placeholder="Enter your password..." />
 
                     <button className="loginbutton"><b>LOG IN</b></button>
                 </form>
