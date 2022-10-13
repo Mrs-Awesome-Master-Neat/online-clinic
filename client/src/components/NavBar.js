@@ -1,8 +1,12 @@
+
 import '../style/navbar.css'
+//import Profile from './Profile'
 
 export default function NavBar() {
     return (
         <div className='navbar'>
+            
+            
             <div>
                 <img src="/icons/home.png" alt="" />
                 <p className='nav-text'>Home</p>
@@ -20,9 +24,12 @@ export default function NavBar() {
                 <p className='nav-text'>My Posts</p>
             </div>
             <div>
+                
                 <img src="/icons/prof-edit.png" alt="" />
-                <p className='nav-text'>profile</p>
+                <p className='nav-text'>Profile</p>
+                
             </div>
+            
         </div>
-    )
+    );
 }

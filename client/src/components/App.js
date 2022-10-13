@@ -3,6 +3,7 @@ import { Switch, Route, useHistory } from 'react-router-dom';
 import Login from "./Login";
 import Dashboard from './DashBoard';
 import Signup from './Signup';
+import Profile from './Profile';
 
 function App() {
   const history = useHistory()
@@ -13,10 +14,14 @@ function App() {
           <Login />
         </Route>
         <Route path={"/signup"}>
+
           <Signup/> 
         </Route>
         <Route path={"/dashboard"}>
           <Dashboard/>
+        </Route>
+        <Route path={"/profile"}>
+          <Profile/>
         </Route>
 
         <Route exact path={"/"}>
@@ -25,6 +30,8 @@ function App() {
 
           <button onClick={() => history.push("signup")}>Sign Up</button>
           <button onClick={() => history.push("dashboard")}>dashboard</button>
+          <button onClick={() => history.push("profile")}>Profile</button>
+          
         </Route>
       </Switch>
     </div>
