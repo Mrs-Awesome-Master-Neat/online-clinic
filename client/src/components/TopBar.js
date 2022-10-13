@@ -18,6 +18,7 @@ export default function TopBar() {
                   <p className="top-name">Oscar Otee</p>
                   <p className="top-username">@oscar_otee</p>
                 </div>
+                
             </div>
         </div>
     )
