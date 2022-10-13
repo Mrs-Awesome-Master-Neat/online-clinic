@@ -2,6 +2,7 @@ import '../style/App.css';
 import { Switch, Route, useHistory } from 'react-router-dom';
 import Login from "./Login";
 import Dashboard from './DashBoard';
+import Signup from './Signup'
 
 function App() {
   const history = useHistory()
@@ -9,10 +10,10 @@ function App() {
     <div className="App">
       <Switch>
         <Route path={"/login"}>
-          {/* <Login /> */}
+          <Login />
         </Route>
         <Route path={"/signup"}>
-          {/* <Signup/>  */}
+          <Signup/> 
         </Route>
         <Route path={"/dashboard"}>
           <Dashboard/>
