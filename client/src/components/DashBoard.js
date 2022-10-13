@@ -4,6 +4,8 @@ import "../style/dashboard.css"
 import { useState } from "react";
 import TopBar from "./TopBar";
 import Discover from "./Discover";
+import { Route } from "react-router-dom";
+import Profile from "./Profile";
 
 export default function Dashboard() {
     const [isDesktop, SetIsDesktop] = useState(document.documentElement.clientWidth > 600)
@@ -16,7 +18,7 @@ export default function Dashboard() {
             <TopBar/>
             <div className="dashboard">
                 {isDesktop ? <NavBar /> : null}
-                <div className="posts">
+                <Route exact path="/dashboard"><div className="posts">
                     <Post />
                     <Post />
                     <Post />
@@ -26,7 +28,9 @@ export default function Dashboard() {
                     <Post />
                     <Post />
                 </div>
-             
+                </Route>
+                <Route exact path="/dashboard/profile" component={Profile}></Route>
+              
                 {isDesktop ? <Discover/>: <NavBar />}
             </div>
         </div>

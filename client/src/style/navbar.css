@@ -42,6 +42,16 @@ box-shadow:  5px 5px 10px #aaa8a8,
     display: none;
 }
 
+.profilelink{
+    color: black;
+    text-decoration: none;
+}
+
+.homelink{
+   color: black;
+    text-decoration: none; 
+}
+
 @media only screen and (min-width:600px) {
     .nav-text {
         display: block;
@@ -84,6 +94,6 @@ box-shadow: 8px 8px 17px #bfbebe,
     }
 
     .navbar img {
-        margin: 20px 30px 20px 15px;
+        margin: 20px 30px 15px 15px;
     }
 }

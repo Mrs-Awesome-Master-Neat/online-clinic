@@ -9,9 +9,13 @@ export default function NavBar() {
     }
     return (
         <div className='navbar'>
+            
+            
             <div className={active==="Home"?"active":""} onClick={handleNavClick}>
-                <img src="/icons/home.png" alt="" />
-                <p className='nav-text'>Home</p>
+                <NavLink activeClassName='is-active' to="/dashboard" ><img src="/icons/home.png" alt="" /></NavLink>
+                <p className='nav-text'>
+                    <NavLink className="homelink" activeClassName='is-active' to="/dashboard">
+                    Home </NavLink></p>
             </div>
             <div className={active==="Health Learn"?"active":""} onClick={handleNavClick}>
                 <img src="/icons/medi.png" alt="" />
@@ -22,13 +26,15 @@ export default function NavBar() {
                 <p className='nav-text'>Connect</p>
             </div>
             <div className={active==="My Posts"?"active":""} onClick={handleNavClick}>
+
                 <img src="/icons/like.svg" alt="" />
                 <p className='nav-text'>My Posts</p>
             </div>
-            <div className={active==="Profile"?"active":""} onClick={handleNavClick}>
-                <img src="/icons/prof-edit.png" alt="" />
-                <p className='nav-text'>Profile</p>
+            <div>
+            <NavLink activeClassName='is-active' to="/dashboard/profile"><img src="/icons/prof-edit.png" alt="" /></NavLink>
+            <NavLink className="profilelink" activeClassName='is-active' to="/dashboard/profile">
+            <p className='nav-text'>Profile </p></NavLink> 
             </div>
         </div>
-    )
+    );
 }
