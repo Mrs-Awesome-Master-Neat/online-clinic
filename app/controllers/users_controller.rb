@@ -3,7 +3,12 @@ class UsersController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
-    #def create
+    def create
+        user=User.create!(user_params)
+        session[:user_id]=user.id
+
+        render json: user, status: :created
+    end
 
     def users_index
         render json: NormalUser.all, status: :ok
