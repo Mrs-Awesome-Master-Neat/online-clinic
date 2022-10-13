@@ -1,5 +1,10 @@
 import '../style/App.css';
-import { Switch, Route, useHistory } from 'react-router-dom'
+import { Switch, Route, useHistory } from 'react-router-dom';
+import {useState, useEffect} from 'react';
+import SignUp from "./SignUp";
+import Login from "./Login";
+import NavBar from "./NavBar";
+import Home from "./Home";
 import Login from './Login';
 import Dashboard from './DashBoard';
 
@@ -27,6 +32,8 @@ function App() {
       </Switch>
     </div>
   );
+
+  
 }
 
 export default App;
