@@ -7,6 +7,7 @@ import NavBar from "./NavBar";
 import Home from "./Home";
 import Login from './Login';
 import Dashboard from './DashBoard';
+import Signup from './Signup';
 
 function App() {
   const history = useHistory()
@@ -16,8 +17,8 @@ function App() {
         <Route path={"/login"}>
           <Login />
         </Route>
-        <Route path={"/signin"}>
-          {/* <Signin/> */}
+        <Route path={"/signup"}>
+          <Signup/> 
         </Route>
         <Route path={"/dashboard"}>
           <Dashboard/>
@@ -25,8 +26,9 @@ function App() {
 
         <Route exact path={"/"}>
           {/* create a button here to route to your component */}
-          <button onClick={() => history.push("login")}>Login</button>
-          <button onClick={() => history.push("signin")}>signin</button>
+          <button onClick={() => history.push("login")}>Log In</button>
+
+          <button onClick={() => history.push("signup")}>Sign Up</button>
           <button onClick={() => history.push("dashboard")}>dashboard</button>
         </Route>
       </Switch>
