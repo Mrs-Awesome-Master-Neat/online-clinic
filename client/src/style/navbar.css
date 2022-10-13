@@ -26,6 +26,16 @@
     display: none;
 }
 
+.profilelink{
+    color: black;
+    text-decoration: none;
+}
+
+.homelink{
+   color: black;
+    text-decoration: none; 
+}
+
 @media only screen and (min-width:600px) {
     .nav-text {
         display: block;
@@ -53,6 +63,6 @@
     }
 
     .navbar img {
-        margin: 20px 30px 20px 15px;
+        margin: 20px 30px 15px 15px;
     }
 }

@@ -1,0 +1,32 @@
+.profile-container{
+    font-family: "Noto Sans", sans-serif;
+    background-color: #fcfcfc;
+    align-self: center;
+    width: 490px;
+    height: 450px;
+    padding: 0px 10px 0px 5px;
+    box-shadow:  5px 5px 10px #b9d0ea,
+             -5px -5px 10px #e4e1e1;;
+    margin-top: 20px;
+}
+.profile-container img{
+    border-radius: 50%;
+    margin-top: 20px;
+}
+.user-details{
+    display: flex;
+    flex-direction: column;
+}
+.nameheader{
+    margin: 5px 10px -13px;
+}
+.usernameheader{
+    font-size: 20px;
+}
+.user-details p{
+    margin: 5px 10px;
+    display: block; 
+    text-align: left;  
+    margin-left: 30%;
+   
+}
