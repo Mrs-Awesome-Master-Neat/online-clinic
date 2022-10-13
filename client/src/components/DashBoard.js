@@ -1,7 +1,7 @@
 import NavBar from "./NavBar";
 import Post from "./Post";
 import "../style/dashboard.css"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import TopBar from "./TopBar";
 import Discover from "./Discover";
 
