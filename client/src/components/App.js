@@ -1,8 +1,6 @@
 import '../style/App.css';
 import { Switch, Route, useHistory } from 'react-router-dom';
-// import {useState, useEffect} from 'react';
-// import Signup from "./Signup";
-// import Login from "./Login";
+import Login from "./Login";
 import Dashboard from './DashBoard';
 
 function App() {
