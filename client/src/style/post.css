@@ -1,10 +1,12 @@
 .post{
+    font-size: 15px;
 padding: 0px 10px 0px 5px;
 font-family: "Noto Sans",sans-serif;
 background: #fcfcfc;
-/* background: #e0e0e0; */
-box-shadow:  15px 15px 42px #f1f1f1,
-             -15px -15px 42px #f8f8f8;
+max-width: 600px;
+margin: 10px 5px;
+box-shadow:  5px 5px 10px #bbbbbb,
+             -5px -5px 10px #ffffff;;
 }
 
 .main-details{
@@ -12,7 +14,7 @@ box-shadow:  15px 15px 42px #f1f1f1,
     align-items: center;
 }
 .prof-image img{
-    height: 80px;
+    height: 65px;
     border-radius: 10px;
     margin: auto  10px auto auto;
 }
@@ -20,7 +22,7 @@ box-shadow:  15px 15px 42px #f1f1f1,
     display: flex;
     justify-content: space-between;
     color: #747474;
-    font-size: 14px;
+    font-size: 12px;
 }
 .post-names{
     display: flex;
@@ -43,6 +45,7 @@ box-shadow:  15px 15px 42px #f1f1f1,
     cursor: pointer;
 }
 .post-bottom {
+    margin: -5px auto auto ;
 display: flex;
 justify-content: space-between;
 
@@ -51,18 +54,21 @@ justify-content: space-between;
 .post-bottom div{
     display: flex;
     align-items: center;
-    padding: 0 10px;
+    padding: 0 15px;
 
 }
 .post-icons{
-    height: 22px;
+    height: 20px;
     cursor: pointer;
 }
 .post-counts{
     margin-left: 7px;
     color: #747474;
 }
-.post-like{
-    
+
+@media only screen and (min-width: 600px) {
+    .post{
+        font-size: 16px;
+    }
 }
 
