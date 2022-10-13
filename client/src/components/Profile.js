@@ -1,15 +1,20 @@
 import React from "react";
 import "../style/profile.css"
-import image2 from "../images/profilepic.png"
+
+
 
 function Profile() {
+
+    
+
     return (
-        <div className="profile">
-            <img className="image" width="70" height="70" src={image2} alt="avatar" />
+        
+            
+        <div className="profile-container">
+            <img className="image" width="100" height="100" src="/images/prof-pic.png" alt="avatar" />
             <div className="username-details">
                 <h1 className="nameheader">Oscar Otee</h1>
                 <h3 className="usernameheader">@oscar_otee</h3>
-                <h2>Details :</h2>
                 <div className="user-details">
                     <p><b>Profession :</b> Cancer Specialist</p>
                     <p><b>Email Address : </b>oscarotee@gmail.com</p>
@@ -20,6 +25,7 @@ function Profile() {
                 </div>
             </div>
         </div>
+    
     )
 }
 
