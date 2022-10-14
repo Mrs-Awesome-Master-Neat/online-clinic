@@ -1,6 +1,6 @@
 import "../style/top-bar.css"
 
-export default function TopBar() {
+export default function TopBar({user}) {
     return (
         <div className="top-bar">
             <div className="logo-div">
@@ -15,8 +15,8 @@ export default function TopBar() {
             <div className="bar-profile">
                 <img src="/images/prof-pic.png" alt="profile"/>
                 <div>
-                  <p className="top-name">Oscar Otee</p>
-                  <p className="top-username">@oscar_otee</p>
+                  <p className="top-name">{user.first_name} {user.last_name}</p>
+                  <p className="top-username">@{user.user_name}</p>
                 </div>
                 
             </div>

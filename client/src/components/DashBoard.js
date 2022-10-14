@@ -7,7 +7,7 @@ import Discover from "./Discover";
 import { Route } from "react-router-dom";
 import Profile from "./Profile";
 
-export default function Dashboard() {
+export default function Dashboard({user}) {
     const [isDesktop, SetIsDesktop] = useState(document.documentElement.clientWidth > 600)
 
     window.addEventListener("resize", () => {
@@ -15,7 +15,7 @@ export default function Dashboard() {
     }, true)
     return (
         <div className="dash-container">
-            <TopBar/>
+            <TopBar user={user}/>
             <div className="dashboard">
                 {isDesktop ? <NavBar /> : null}
                 <Route exact path="/dashboard"><div className="posts">

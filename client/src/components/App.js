@@ -3,6 +3,7 @@ import { Switch, Route, useHistory } from 'react-router-dom';
 import Login from "./Login";
 import Dashboard from './DashBoard';
 import Signup from './Signup';
+import Profile from './Profile';
 
 import { useEffect, useState } from 'react';
 
@@ -19,12 +20,17 @@ function App() {
       }
     })
   }),[])
+  console.log(user)
 
   function onLogin(user){
     setUser(user)
     history.push('/dashboard')
   }
 
+  function dprofile(user){
+    setUser(user)
+    history.push("/dashboard/profile")
+  }
   
   return (
     <div className="App">
@@ -36,9 +42,11 @@ function App() {
           <Signup onLogin={onLogin}/> 
         </Route>
         <Route path={"/dashboard"}>
-          <Dashboard/>
+          {user? <Dashboard user={user}/>:null}
         </Route>
-        
+        <Route path={"/dashboard/profile"}>
+          {user? <Profile dprofile={dprofile}/>:null}
+        </Route>
 
         <Route exact path={"/"}>
           {/* create a button here to route to your component */}

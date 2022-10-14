@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import '../style/navbar.css'
+import { NavLink } from 'react-router-dom'
 
 export default function NavBar() {
     const[active,setActive]=useState("Home")
