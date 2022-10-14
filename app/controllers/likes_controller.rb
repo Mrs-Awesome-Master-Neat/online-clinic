@@ -15,6 +15,11 @@ class LikesController < ApplicationController
         end
     end
 
+    def create
+        like=Like.create!(user_id:session[:user_id],post_id:params[:post_id])
+        render json: like.post, status: :created
+    end
+
  
 
 end

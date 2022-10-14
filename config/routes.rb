@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :fields, only: [:index, :show]
   resources :diseases, only:[:index, :show]
   
-  resources :likes
+  resources :likes,only:[:index,:show,:create]
   resources :comments
   resources :user_posts, only: [:create, :update]
   resources :posts

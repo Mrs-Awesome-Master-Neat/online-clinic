@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../style/login.css";
 import image1 from "../images/adult.jpg"
+import { useHistory } from "react-router-dom";
 
 
 export default function Login({onLogin}) {
@@ -26,7 +27,10 @@ export default function Login({onLogin}) {
             res.json(errors).then(setErrors)
            }
         })
+
+        
     }
+    const history=useHistory()
     return (
         <div className="login">
 
@@ -50,7 +54,7 @@ export default function Login({onLogin}) {
 
                     <button className="loginbutton"><b>LOG IN</b></button>
                 </form>
-                <p>Don't have an account yet?<b style={{textDecoration:"underline"}}>Sign Up</b></p>
+                <p>Don't have an account yet?<b onClick={()=>history.push("/signup")} style={{textDecoration:"underline", cursor:"pointer"}}>Sign Up</b></p>
             </div>
 
         </div>

@@ -1,12 +1,27 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "../style/post.css"
 export default function Post({post}) {
     const[liked,setLiked]=useState(false)
-
+    const [currentPost,setCurrentPost]=useState(post)
     function handleLikeClick(){
         setLiked(like => !like)
     }
-    let time=post.created_at.split(/[-T:.Z]/)
+    useEffect((()=>{
+        if (liked){
+            fetch("/likes",{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                    post_id:currentPost.id
+                })
+            }).then(r=>r.json()).then(p=>{
+                console.log("p",p)
+            })
+        }
+    }),[])
+    let time=currentPost.created_at.split(/[-T:.Z]/)
     time[1]=parseInt(time[1])-1
     time[3]=parseInt(time[3])+3
     time.pop()
@@ -39,27 +54,27 @@ export default function Post({post}) {
                 <div className="details">
                     <div className="post-top">
                         <div className="post-names">
-                            <p>@{post.author}</p>
+                            <p>@{currentPost.author}</p>
                             <p className="post-dot">.</p>
-                            <p>{post.group}</p>
+                            <p>{currentPost.group}</p>
                             <p className="post-dot">.</p>
                             <p>{times}</p>
                         </div>
                         <p className="more">...</p>
                     </div>
                     <div className="content">
-                        <p>{post.content}</p>
+                        <p>{currentPost.content}</p>
                     </div>
                 </div>
             </div>
             <div className="post-bottom">
                 <div>
                     <img src="/icons/comment.png" alt="" className="post-icons" />
-                    <p className="post-counts">{post.all_comments}</p>
+                    <p className="post-counts">{currentPost.all_comments}</p>
                 </div>
                 <div>
                     <img onClick={handleLikeClick} src={`/icons/like${liked?"2":""}.svg`} id="post-like" alt="" className="post-icons" />
-                    <p className="post-counts">{post.all_likes}</p>
+                    <p className="post-counts">{currentPost.all_likes}</p>
                 </div>
             </div>
         </div>

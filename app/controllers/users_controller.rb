@@ -8,6 +8,13 @@ class UsersController < ApplicationController
 
     def create
         user=User.create!(all_params)
+        4.times do
+            Subscribe.create(
+                user_id: user.id,
+                disease_id: Disease.all[rand(Disease.count)].id
+            )
+        end
+
         session[:user_id]=user.id
 
         render json: user, status: :created

@@ -8,6 +8,7 @@ import { Route } from "react-router-dom";
 import Profile from "./Profile";
 import CreatePost from "./CreatePost";
 import GroupDetails from "./GroupDetails";
+import MyGroups from "./MyGroups";
 
 export default function Dashboard({ user }) {
     const [isDesktop, SetIsDesktop] = useState(document.documentElement.clientWidth > 600)
@@ -89,7 +90,8 @@ console.log(allPosts)
                                 return <Post post={post} key={index} />
                             })}
                         </div>
-                        {<Discover groups={user.diseases} />}
+                     
+                        {<MyGroups getGroup={getGroup} groups={user.diseases} />}
                     </div>:null}
                     {/* {activeGroup? <div> */}
                     {/* <GroupDetails activeGroup={activeGroup}/> */}
