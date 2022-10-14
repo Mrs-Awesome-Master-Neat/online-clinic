@@ -4,11 +4,11 @@ export default function GroupDetails({ group, myGroups }) {
         <div className="group-more">
             <div className="group-icons">
                 <div id="cancel" className="group-if-join">
-                    {<img  src="/icons/cancel.svg" />}
+                    {<img  src="/icons/cancel.svg" alt="cancel" />}
                 </div>
-                <img id="group-profile" src="/images/child.png" />
+                <img id="group-profile" src="/images/child.png" alt="child" />
                 <div id="joined"  className="group-if-join">
-                    {<img src="/icons/checkmark.svg" />}
+                    {<img src="/icons/checkmark.svg" alt="checkmark" />}
                 </div>
             </div>
             <div className="g-d-name">

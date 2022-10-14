@@ -1,11 +1,19 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
+
 import "../style/profile.css"
 
 
 
 function Profile({user}) {
-    
+    console.log(user)
 
+    const history = useHistory();
+    
+    function navigateUpdate() {
+        history.push("/editprofile");
+    }
+   
     return (
         
             
@@ -15,14 +23,15 @@ function Profile({user}) {
                 <h1 className="nameheader">{user.first_name} {user.last_name}</h1>
                 <h3 className="usernameheader">@{user.user_name}</h3>
                 <div className="user-details">
-                    <p><b>Profession :</b> Cancer Specialist</p>
+                    <p><b>Profession :</b> {user.type}</p>
                     <p><b>Email Address : </b>{user.email}</p>
-                    <p><b>Place of work : </b> Johns Hopkins Hospital</p>
-                    <p><b>Started Work : </b> 19/01/2001 </p>
-                    <p><b>Date of birth :</b> 3/04/1975 </p>
-                    <p><b>Gender :</b> Male </p>
+                    <p><b>Date of birth :</b>{user.date_of_birth}</p>
+                    <p><b>Gender :</b> {user.gender} </p>
                 </div>
+
+                <button className="update-profile" onClick={navigateUpdate}>EDIT PROFILE</button>
             </div>
+           
         </div>
     
     )
