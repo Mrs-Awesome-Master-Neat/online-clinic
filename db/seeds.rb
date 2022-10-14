@@ -117,3 +117,22 @@ MedicalProfessionalUser.create(
     place_of_work: "AAR Hospital"
 )
 puts "We are good!"
+
+puts "Lets subscribe to some goups"
+
+10.times do 
+    Subscribe.create(
+        user_id: User.all[rand(User.count)].id,
+        disease_id: Disease.all[rand(Disease.count)].id
+    )
+end
+
+puts "Lets make some posts"
+
+40.times do
+    Post.create(
+        content: Faker::Lorem.paragraph(sentence_count: 4),
+        user_id:User.all[rand(User.count)].id,
+        disease_id: Disease.all[rand(Disease.count)].id
+    )
+end
