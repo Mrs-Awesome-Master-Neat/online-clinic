@@ -1,6 +1,5 @@
 class PostSerializer < ActiveModel::Serializer
-  attributes :id, :content
+  attributes :id, :content, :author,:group
 
-  has_many :likes
   has_many :comments
 end

@@ -4,6 +4,7 @@ import image1 from "../images/adult.jpg"
 
 
 export default function Login({onLogin}) {
+
     const [errors,setErrors]=useState(null)
     const [loginDetails,setLoginDetails]=useState({
         user_details: "",
@@ -22,7 +23,7 @@ export default function Login({onLogin}) {
            if(res.ok){
             res.json().then(onLogin)
            }else{
-            res.json().then(setErrors)
+            res.json(errors).then(setErrors)
            }
         })
     }
@@ -49,7 +50,7 @@ export default function Login({onLogin}) {
 
                     <button className="loginbutton"><b>LOG IN</b></button>
                 </form>
-
+                <p>Don't have an account yet?<b style={{textDecoration:"underline"}}>Sign Up</b></p>
             </div>
 
         </div>
