@@ -15,8 +15,16 @@ export default function Dashboard({ user }) {
     const [myGroups, setMyGroups] = useState([])
     const [activeGroup, setActiveGroup] = useState(null)
     const [allGroups, setAllGroups] = useState([])
-    
-    
+
+    const [allPosts,setAllPosts]=useState([])
+
+    useEffect((()=>{
+        fetch("/posts")
+        .then(r=>r.json())
+        .then(setAllPosts)
+    }),[])
+
+console.log(allPosts)
     useEffect((() => {
         fetch("/diseases")
             .then(r => r.json())
@@ -24,8 +32,14 @@ export default function Dashboard({ user }) {
     }), [])
 
     useEffect((() => {
-        setActiveGroup(myGroups[0])
+        getGroup(user.diseases[0].id)
     }), [])
+
+    function getGroup(id){
+        fetch(`/diseases/${id}`)
+        .then(r=>r.json())
+        .then(console.log)
+    }
 
     window.addEventListener("resize", () => {
         SetIsDesktop(isDesktop => document.documentElement.clientWidth > 600 ? true : false)
@@ -51,7 +65,7 @@ export default function Dashboard({ user }) {
             }
         })
     }
-    const unsubscribed=allGroups.filter(g=>!(user.diseases.map(gr=>gr.id).includes(g.id)))
+    const unsubscribed = allGroups.filter(g => !(user.diseases.map(gr => gr.id).includes(g.id)))
     console.log(unsubscribed)
     return (
         <div className="dash-container">
@@ -59,24 +73,23 @@ export default function Dashboard({ user }) {
             <div className="dashboard">
                 {isDesktop ? <NavBar /> : null}
                 <Route exact path="/dashboard"><div className="posts">
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
+                    {allPosts.map((post,index)=>{
+                       return <Post key={index} post={post}/>
+                    })}
                 </div>
                     {isDesktop ? <Discover onSubscribe={onSubscribe} groups={allGroups} /> : <NavBar />}
                 </Route>
                 <Route exact path="/dashboard/profile" component={Profile}></Route>
                 <Route exact path={"/dashboard/connect"}>
-                    <div>
-                        {user.diseases.map(aGroup => {
-                            return <GroupDetails group={aGroup} key={aGroup.id} />
-                        })}
-                    </div>
+                   {activeGroup? <div style={{ display: "flex" }}>
+                        <div>
+                            <GroupDetails group={allGroups[0]}/>
+                            {activeGroup.posts.map((post,index)=> {
+                                return <Post group={post} key={index} />
+                            })}
+                        </div>
+                        {<Discover groups={user.diseases} />}
+                    </div>:null}
                     {/* {activeGroup? <div> */}
                     {/* <GroupDetails activeGroup={activeGroup}/> */}
                     {/* <CreatePost /> */}
