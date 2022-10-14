@@ -1,6 +1,6 @@
 import { useState } from "react"
 import "../style/post.css"
-export default function Post() {
+export default function Post({post}) {
     const[liked,setLiked]=useState(false)
 
     function handleLikeClick(){
@@ -15,16 +15,16 @@ export default function Post() {
                 <div className="details">
                     <div className="post-top">
                         <div className="post-names">
-                            <p>@oscar_otee</p>
+                            <p>@{post.author}</p>
                             <p className="post-dot">.</p>
-                            <p>Cancer</p>
+                            <p>{post.group}</p>
                             <p className="post-dot">.</p>
                             <p>2h</p>
                         </div>
                         <p className="more">...</p>
                     </div>
                     <div className="content">
-                        <p>This disease can be treated if diagnosed early. If you make it a point of earlier diagnosis, be sure that it can be treated if you are diagnosed of it.</p>
+                        <p>{post.content}</p>
                     </div>
                 </div>
             </div>

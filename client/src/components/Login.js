@@ -49,7 +49,7 @@ export default function Login({onLogin}) {
 
                     <button className="loginbutton"><b>LOG IN</b></button>
                 </form>
-
+                <p>Don't have an account yet?<b style={{textDecoration:"underline"}}>Sign Up</b></p>
             </div>
 
         </div>
