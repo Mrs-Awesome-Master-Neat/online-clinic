@@ -81,7 +81,7 @@ function Signup({onLogin}) {
         </div>
 
 
-    );
+    )
 }
 
 export default Signup;
