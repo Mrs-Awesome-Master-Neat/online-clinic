@@ -131,8 +131,21 @@ puts "Lets make some posts"
 
 40.times do
     Post.create(
-        content: Faker::Lorem.paragraph(sentence_count: 4),
+        content: Faker::Lorem.paragraph(sentence_count: rand(3..7)),
         user_id:User.all[rand(User.count)].id,
         disease_id: Disease.all[rand(Disease.count)].id
     )
 end
+
+100.times do
+    Like.create(
+        user_id: User.all[rand(User.count)].id,
+        post_id: Post.all[rand(Post.count)].id
+    )
+    Comment.create(
+        text:Faker::Lorem.paragraph(sentence_count: rand(1..3)),
+        user_id: User.all[rand(User.count)].id,
+        post_id: Post.all[rand(Post.count)].id
+    )
+end
+

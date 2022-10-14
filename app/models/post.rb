@@ -11,4 +11,12 @@ class Post < ApplicationRecord
     def group
         self.disease.name
     end
+
+    def all_likes
+        self.likes.count
+    end
+
+    def all_comments
+        self.comments.count
+    end
 end

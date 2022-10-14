@@ -2,13 +2,13 @@
     position: relative;
 }
 .dashboard{
-    background: #ffffff;
+    background: #fafafa;
     display: flex;
     flex-direction: column;
     margin: 0;
 }
 .group-more{
-    font-family: "Noto Sans";
+font-family: "Noto Sans";
 max-width: 600px;
 padding: 20px;
 margin: 20px;

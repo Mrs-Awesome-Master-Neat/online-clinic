@@ -38,7 +38,7 @@ console.log(allPosts)
     function getGroup(id){
         fetch(`/diseases/${id}`)
         .then(r=>r.json())
-        .then(console.log)
+        .then(setActiveGroup)
     }
 
     window.addEventListener("resize", () => {
@@ -66,7 +66,7 @@ console.log(allPosts)
         })
     }
     const unsubscribed = allGroups.filter(g => !(user.diseases.map(gr => gr.id).includes(g.id)))
-    console.log(unsubscribed)
+    console.log(activeGroup)
     return (
         <div className="dash-container">
             <TopBar user={user} />
@@ -82,10 +82,11 @@ console.log(allPosts)
                 <Route exact path="/dashboard/profile" component={Profile}></Route>
                 <Route exact path={"/dashboard/connect"}>
                    {activeGroup? <div style={{ display: "flex" }}>
-                        <div>
+                        <div style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
                             <GroupDetails group={allGroups[0]}/>
+                            <h3>Popular Posts</h3>
                             {activeGroup.posts.map((post,index)=> {
-                                return <Post group={post} key={index} />
+                                return <Post post={post} key={index} />
                             })}
                         </div>
                         {<Discover groups={user.diseases} />}
