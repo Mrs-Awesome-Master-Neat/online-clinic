@@ -53,11 +53,13 @@
 .bar-profile {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .bar-profile img {
     height: 40px;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .top-name {
@@ -90,4 +92,34 @@
         height: 35px;
         font-size: 16px;
     }
+}
+.top-logout{
+    position: absolute;
+    top: 0px;
+    left: -150px;
+    z-index: 99;
+    padding: 4px;
+    background: #e0e0e0;
+    box-shadow: 5px 5px 10px #808080,
+    -5px -5px 10px #ffffff;
+}
+.logout-cancel{
+display: flex;
+align-items: center;
+background: #e0e0e0;
+cursor: pointer;
+font-family: "Noto Sans";
+font-size: 16px;
+border: none;
+outline: none;
+justify-content: space-between;
+width: 100px;
+margin: 5px;
+
+}
+.logout-cancel:hover{
+    border: 2px solid;
+}
+.top-logout button img{
+    height: 20px;
 }

@@ -33,7 +33,7 @@ function App() {
     <div className="App">
       <Switch>
         <Route path={"/login"}>
-          <Login onLogin={onLogin}/>
+        
         </Route>
         <Route path={"/signup"}>
           <Signup onLogin={onLogin}/> 
@@ -47,14 +47,8 @@ function App() {
 
         </Route>
 
-        <Route exact path={"/"}>
-          {/* create a button here to route to your component */}
-          <button onClick={() => history.push("login")}>Log In</button>
-
-          <button onClick={() => history.push("signup")}>Sign Up</button>
-          <button onClick={() => history.push("dashboard")}>dashboard</button>
-          
-          
+        <Route exact path={"/"}>          
+           <Login onLogin={onLogin}/>
         </Route>
       </Switch>
     </div>

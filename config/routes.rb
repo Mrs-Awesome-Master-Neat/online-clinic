@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :subscribes,only:[:create]
   resources :disease_fields, only: [:create]
   resources :fields, only: [:index, :show]
   resources :diseases, only:[:index, :show]
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   resources :posts
 
   post 'sessions', to: "session#create"
+  delete "logout", to: "session#destroy"
 
 
   get 'normal_users', to: "users#users_index"
