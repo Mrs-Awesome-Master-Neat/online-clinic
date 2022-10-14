@@ -38,7 +38,7 @@ class UsersController < ApplicationController
         user.update!(all_params)
         render json: user, status: :accepted
     end
-
+ 
     def upgrade
         user=NormalUser.find_by!(id: session[:user_id])
         user=user.becomes(MedicalProfessionalUser)

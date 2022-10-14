@@ -3,7 +3,7 @@ import { Switch, Route, useHistory } from 'react-router-dom';
 import Login from "./Login";
 import Dashboard from './DashBoard';
 import Signup from './Signup';
-import Profile from './Profile';
+
 
 import { useEffect, useState } from 'react';
 
@@ -28,6 +28,8 @@ function App() {
   }
 
   
+
+  
   
   return (
     <div className="App">
@@ -41,15 +43,12 @@ function App() {
         <Route path={"/dashboard"}>
           {user? <Dashboard user={user}/>:null}
         </Route>
-        <Route path={"/dashboard/profile"}>
-          
-          <Profile user={user}/>
-
-        </Route>
 
         <Route exact path={"/"}>          
            <Login onLogin={onLogin}/>
         </Route>
+
+        
       </Switch>
     </div>
   );

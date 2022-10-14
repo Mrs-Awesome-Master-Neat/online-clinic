@@ -80,7 +80,10 @@ console.log(allPosts)
                 </div>
                     {isDesktop ? <Discover onSubscribe={onSubscribe} groups={allGroups} /> : <NavBar />}
                 </Route>
-                <Route exact path="/dashboard/profile" component={Profile}></Route>
+                <Route exact path="/dashboard/profile">
+                    
+                    {user ? <Profile user={user}/>:null }
+                </Route>
                 <Route exact path={"/dashboard/connect"}>
                    {activeGroup? <div style={{ display: "flex" }}>
                         <div style={{display:"flex",flexDirection:"column",alignItems:"center"}}>

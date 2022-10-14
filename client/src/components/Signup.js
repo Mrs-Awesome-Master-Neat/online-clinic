@@ -4,6 +4,7 @@ import "../style/signup.css";
 import video1 from "../images/Heart.mp4";
 import Video from "react-background-video-player"
 
+
 function Signup({onLogin}) {
     const[errors,setErrors]=useState(null)
     const[signupDetails,setSignupDetails]=useState(
