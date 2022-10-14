@@ -3,7 +3,7 @@ import "../style/profile.css"
 
 
 
-function Profile({ user }) {
+function Profile({user}) {
     
 
     return (
@@ -13,7 +13,7 @@ function Profile({ user }) {
             <img className="image" width="100" height="100" src="/images/prof-pic.png" alt="avatar" />
             <div className="username-details">
                 <h1 className="nameheader">{user.first_name} {user.last_name}</h1>
-                <h3 className="usernameheader">@oscar_otee</h3>
+                <h3 className="usernameheader">@{user.user_name}</h3>
                 <div className="user-details">
                     <p><b>Profession :</b> Cancer Specialist</p>
                     <p><b>Email Address : </b>{user.email}</p>

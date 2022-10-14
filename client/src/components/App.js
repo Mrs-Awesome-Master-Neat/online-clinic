@@ -27,10 +27,7 @@ function App() {
     history.push('/dashboard')
   }
 
-  function dprofile(user){
-    setUser(user)
-    history.push("/dashboard/profile")
-  }
+  
   
   return (
     <div className="App">
@@ -45,7 +42,9 @@ function App() {
           {user? <Dashboard user={user}/>:null}
         </Route>
         <Route path={"/dashboard/profile"}>
-          {user? <Profile dprofile={dprofile}/>:null}
+          
+          <Profile user={user}/>
+
         </Route>
 
         <Route exact path={"/"}>
