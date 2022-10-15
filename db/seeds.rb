@@ -120,7 +120,7 @@ puts "We are good!"
 
 puts "Lets subscribe to some goups"
 
-10.times do 
+15.times do 
     Subscribe.create(
         user_id: User.all[rand(User.count)].id,
         disease_id: Disease.all[rand(Disease.count)].id
@@ -129,7 +129,7 @@ end
 
 puts "Lets make some posts"
 
-40.times do
+25.times do
     Post.create(
         content: Faker::Lorem.paragraph(sentence_count: rand(3..7)),
         user_id:User.all[rand(User.count)].id,
@@ -137,7 +137,7 @@ puts "Lets make some posts"
     )
 end
 
-100.times do
+20.times do
     Like.create(
         user_id: User.all[rand(User.count)].id,
         post_id: Post.all[rand(Post.count)].id

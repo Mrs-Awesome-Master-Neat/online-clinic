@@ -1,49 +1,61 @@
 import { useEffect, useState } from "react"
 import "../style/post.css"
-export default function Post({post}) {
-    const[liked,setLiked]=useState(false)
-    const [currentPost,setCurrentPost]=useState(post)
-    function handleLikeClick(){
-        setLiked(like => !like)
-    }
+export default function Post({ post, likedPosts, setLikedPosts }) {
+    const [currentPost, setCurrentPost] = useState(post)
+    const [liked,setLiked]=useState(false)
+
+    
     useEffect((()=>{
-        if (liked){
-            fetch("/likes",{
-                method:"POST",
-                headers:{
-                    "Content-Type":"application/json"
-                },
-                body:JSON.stringify({
-                    post_id:currentPost.id
-                })
-            }).then(r=>r.json()).then(p=>{
-                console.log("p",p)
-            })
-        }
-    }),[])
-    let time=currentPost.created_at.split(/[-T:.Z]/)
-    time[1]=parseInt(time[1])-1
-    time[3]=parseInt(time[3])+3
-    time.pop()
-    time=time.map(t=>parseInt(t))
-    let date=new Date()
-    let time_diff= new Date(time[0],time[1],time[2],time[3],time[4],time[5])
-    const t=Math.floor((date-time_diff)/(60*1000))
+       setLiked(liked => liked=likedPosts.find(p => p.id === currentPost.id) ? true : false)
+    }),[likedPosts,currentPost])
 
-    function howLog(t){
-        if(t<1){
-            return " <1m"
-        }else if(t<60){
-            return `${t} m`
-        }else if(t>60 && t<(24*60))
-        {
-            return `${Math.round(t/60)} hr`
-        }else{
-            return `${Math.round(t/(60))}`
+    function handleLikeClick() {
+        if (liked) {
+           getThatPost(false)    
+        } else {
+            getThatPost(true)
         }
 
     }
-    const times=howLog(t)
+
+    function getThatPost(is_liked){
+        fetch(`/likes`,{
+            method: "POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({post_id:post.id})
+        }).then(r=>r.json())
+        .then(p=>{
+            console.log(p)
+            setCurrentPost(p)
+            if(is_liked){
+                setLikedPosts(likedPosts=>([...likedPosts,p]))
+            }else{
+                setLikedPosts(likedPosts=>likedPosts.filter(post=>post.id!==p.id))
+            }
+        })
+    }
+    let time = currentPost.created_at.split(/[-T:.Z]/)
+    time[1] = parseInt(time[1]) - 1
+    time[3] = parseInt(time[3]) + 3
+    time.pop()
+    time = time.map(t => parseInt(t))
+    let date = new Date()
+    let time_diff = new Date(time[0], time[1], time[2], time[3], time[4], time[5])
+    const t = Math.floor((date - time_diff) / (60 * 1000))
+
+    function howLog(t) {
+        if (t < 1) {
+            return " <1m"
+        } else if (t < 60) {
+            return `${t} m`
+        } else if (t > 60 && t < (24 * 60)) {
+            return `${Math.round(t / 60)} hr`
+        } else {
+            return `${Math.round(t / (60))}`
+        }
+
+    }
+    const times = howLog(t)
 
     return (
         <div className="post">
@@ -73,7 +85,7 @@ export default function Post({post}) {
                     <p className="post-counts">{currentPost.all_comments}</p>
                 </div>
                 <div>
-                    <img onClick={handleLikeClick} src={`/icons/like${liked?"2":""}.svg`} id="post-like" alt="" className="post-icons" />
+                    <img onClick={handleLikeClick} src={`/icons/like${liked ? "2" : ""}.svg`} id="post-like" alt="" className="post-icons" />
                     <p className="post-counts">{currentPost.all_likes}</p>
                 </div>
             </div>

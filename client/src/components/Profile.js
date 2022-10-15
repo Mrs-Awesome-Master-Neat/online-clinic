@@ -23,7 +23,7 @@ function Profile({user}) {
                 <h1 className="nameheader">{user.first_name} {user.last_name}</h1>
                 <h3 className="usernameheader">@{user.user_name}</h3>
                 <div className="user-details">
-                    <p><b>Profession :</b> {user.type}</p>
+                    <p><b>Full Name: {user.first_name} {user.last_name}</b> {user.type}</p>
                     <p><b>Email Address : </b>{user.email}</p>
                     <p><b>Date of birth :</b>{user.date_of_birth}</p>
                     <p><b>Gender :</b> {user.gender} </p>

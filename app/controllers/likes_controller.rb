@@ -1,23 +1,20 @@
 class LikesController < ApplicationController
-
-    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-
-    def index
-        render json: Like.all
-    end
-
-    def show
-        like = find_like
-        if like
-            render json: like
+    before_action :authorize
+  
+    def create_or_destroy
+        like=Like.find_by(user_id:session[:user_id],post_id:params[:post_id])
+        post=Post.find_by(id:params[:post_id])
+        if(like)
+            like.destroy
         else
-            render_not_found_response
+            like=Like.create!(user_id: session[:user_id],post_id:params[:post_id])
         end
-    end
 
-    def create
-        like=Like.create!(user_id:session[:user_id],post_id:params[:post_id])
-        render json: like.post, status: :created
+        render json: post, status: :created
+    end
+    private
+    def authorize
+        render json: {error: "Not authorized"}, status: :unauthorized unless session.include? :user_id
     end
 
  

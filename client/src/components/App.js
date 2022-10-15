@@ -20,17 +20,15 @@ function App() {
       }
     })
   }),[])
+  if (user){
+    
+  }
   console.log(user)
 
   function onLogin(user){
     setUser(user)
     history.push('/dashboard')
   }
-
-  
-
-  
-  
   return (
     <div className="App">
       <Switch>

@@ -4,13 +4,14 @@ Rails.application.routes.draw do
   resources :fields, only: [:index, :show]
   resources :diseases, only:[:index, :show]
   
-  resources :likes,only:[:index,:show,:create]
   resources :comments
   resources :user_posts, only: [:create, :update]
   resources :posts
 
   post 'sessions', to: "session#create"
   delete "logout", to: "session#destroy"
+
+  post "/likes", to: "likes#create_or_destroy"
 
 
   get 'normal_users', to: "users#users_index"

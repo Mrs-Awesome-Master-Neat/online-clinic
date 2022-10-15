@@ -3,4 +3,6 @@ class NormalUserSerializer < ActiveModel::Serializer
 
   has_many :diseases
   has_many :posts
+  has_many :liked_posts
+  has_many :feeds
 end

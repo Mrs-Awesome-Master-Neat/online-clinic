@@ -16,16 +16,8 @@ export default function Dashboard({ user }) {
     const [myGroups, setMyGroups] = useState([])
     const [activeGroup, setActiveGroup] = useState(null)
     const [allGroups, setAllGroups] = useState([])
+    const [likedPosts,setLikedPosts]=useState(user.liked_posts)
 
-    const [allPosts,setAllPosts]=useState([])
-
-    useEffect((()=>{
-        fetch("/posts")
-        .then(r=>r.json())
-        .then(setAllPosts)
-    }),[])
-
-console.log(allPosts)
     useEffect((() => {
         fetch("/diseases")
             .then(r => r.json())
@@ -67,15 +59,14 @@ console.log(allPosts)
         })
     }
     const unsubscribed = allGroups.filter(g => !(user.diseases.map(gr => gr.id).includes(g.id)))
-    console.log(activeGroup)
     return (
         <div className="dash-container">
             <TopBar user={user} />
             <div className="dashboard">
                 {isDesktop ? <NavBar /> : null}
                 <Route exact path="/dashboard"><div className="posts">
-                    {allPosts.map((post,index)=>{
-                       return <Post key={index} post={post}/>
+                    {user.feeds.map((post,index)=>{
+                       return <Post setLikedPosts={setLikedPosts} likedPosts={likedPosts} key={index} post={post}/>
                     })}
                 </div>
                     {isDesktop ? <Discover onSubscribe={onSubscribe} groups={allGroups} /> : <NavBar />}
@@ -90,7 +81,7 @@ console.log(allPosts)
                             <GroupDetails group={allGroups[0]}/>
                             <h3>Popular Posts</h3>
                             {activeGroup.posts.map((post,index)=> {
-                                return <Post post={post} key={index} />
+                                return <Post setLikedPosts={setLikedPosts} likedPosts={likedPosts} post={post} key={index} />
                             })}
                         </div>
                      
