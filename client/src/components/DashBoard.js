@@ -25,7 +25,7 @@ export default function Dashboard({ user }) {
     }), [])
 
     useEffect((() => {
-        getGroup(user.diseases[0].id)
+        getGroup(user.diseases[1].id)
     }), [])
 
     function getGroup(id){
@@ -78,7 +78,7 @@ export default function Dashboard({ user }) {
                 <Route exact path={"/dashboard/connect"}>
                    {activeGroup? <div style={{ display: "flex" }}>
                         <div style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
-                            <GroupDetails group={allGroups[0]}/>
+                            <GroupDetails group={activeGroup}/>
                             <h3>Popular Posts</h3>
                             {activeGroup.posts.map((post,index)=> {
                                 return <Post setLikedPosts={setLikedPosts} likedPosts={likedPosts} post={post} key={index} />

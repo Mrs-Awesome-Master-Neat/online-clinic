@@ -1,61 +1,78 @@
 import { useEffect, useState } from "react"
 import "../style/post.css"
+import { howLongAgo } from "./howLongAgo"
+import Comment from "./Comment"
+
 export default function Post({ post, likedPosts, setLikedPosts }) {
     const [currentPost, setCurrentPost] = useState(post)
-    const [liked,setLiked]=useState(false)
+    const [liked, setLiked] = useState(false)
+    const [reply, setReply] = useState("")
+    const [showNewReply, setShowNewReply] = useState(false)
 
-    
-    useEffect((()=>{
-       setLiked(liked => liked=likedPosts.find(p => p.id === currentPost.id) ? true : false)
-    }),[likedPosts,currentPost])
+
+    useEffect((() => {
+        setLiked(liked => liked = likedPosts.find(p => p.id === currentPost.id) ? true : false)
+    }), [likedPosts, currentPost])
 
     function handleLikeClick() {
         if (liked) {
-           getThatPost(false)    
+            getThatPost(false)
         } else {
             getThatPost(true)
         }
 
     }
-
-    function getThatPost(is_liked){
-        fetch(`/likes`,{
+    function handleNewReply(e) {
+        e.preventDefault()
+        if(reply==="") return
+        fetch('/comments', {
             method: "POST",
-            headers:{"Content-Type":"application/json"},
-            body:JSON.stringify({post_id:post.id})
-        }).then(r=>r.json())
-        .then(p=>{
-            console.log(p)
-            setCurrentPost(p)
-            if(is_liked){
-                setLikedPosts(likedPosts=>([...likedPosts,p]))
-            }else{
-                setLikedPosts(likedPosts=>likedPosts.filter(post=>post.id!==p.id))
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                post_id: currentPost.id,
+                text: reply
+            })
+        }).then(r => {
+            if (r.ok) {
+                r.json().then(setCurrentPost)
+                setReply("")
+            }
+            else {
+                r.json().then(console.log)
+            }
+
+        })
+    }
+    function getThatPost(is_liked) {
+        fetch(`/likes`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ post_id: post.id })
+        }).then(r => r.json())
+            .then(p => {
+                console.log(p)
+                setCurrentPost(p)
+                if (is_liked) {
+                    setLikedPosts(likedPosts => ([...likedPosts, p]))
+                } else {
+                    setLikedPosts(likedPosts => likedPosts.filter(post => post.id !== p.id))
+                }
+            })
+    }
+    function updatedPost(){
+        fetch(`/posts/${currentPost.id}`)
+        .then(r=>{
+            if(r.ok){
+                r.json().then(setCurrentPost)
             }
         })
     }
-    let time = currentPost.created_at.split(/[-T:.Z]/)
-    time[1] = parseInt(time[1]) - 1
-    time[3] = parseInt(time[3]) + 3
-    time.pop()
-    time = time.map(t => parseInt(t))
-    let date = new Date()
-    let time_diff = new Date(time[0], time[1], time[2], time[3], time[4], time[5])
-    const t = Math.floor((date - time_diff) / (60 * 1000))
-
-    function howLog(t) {
-        if (t < 1) {
-            return " <1m"
-        } else if (t < 60) {
-            return `${t} m`
-        } else if (t > 60 && t < (24 * 60)) {
-            return `${Math.round(t / 60)} hr`
-        } else {
-            return `${Math.round(t / (60))}`
-        }
-
+    function handleRepliesClick(){
+        setShowNewReply(show=>!show)
+        updatedPost()
     }
-    const times = howLog(t)
 
     return (
         <div className="post">
@@ -70,7 +87,7 @@ export default function Post({ post, likedPosts, setLikedPosts }) {
                             <p className="post-dot">.</p>
                             <p>{currentPost.group}</p>
                             <p className="post-dot">.</p>
-                            <p>{times}</p>
+                            <p>{howLongAgo(currentPost.created_at)}</p>
                         </div>
                         <p className="more">...</p>
                     </div>
@@ -81,7 +98,7 @@ export default function Post({ post, likedPosts, setLikedPosts }) {
             </div>
             <div className="post-bottom">
                 <div>
-                    <img src="/icons/comment.png" alt="" className="post-icons" />
+                    <img onClick={handleRepliesClick} src="/icons/comment.png" alt="" className="post-icons" />
                     <p className="post-counts">{currentPost.all_comments}</p>
                 </div>
                 <div>
@@ -89,6 +106,28 @@ export default function Post({ post, likedPosts, setLikedPosts }) {
                     <p className="post-counts">{currentPost.all_likes}</p>
                 </div>
             </div>
+            {showNewReply && currentPost.comments? <div className="new-reply">
+                <div className="replying">
+                    <p>Replying to @{post.author}</p>
+                    <button onClick={() => setShowNewReply(false)}><img src="/icons/cancel.svg" /></button>
+                </div>
+                <form onSubmit={handleNewReply}>
+                    <div className="inputs">
+                        <label><img src="/images/prof-pic.png" /></label>
+                        <textarea onChange={e => setReply(e.target.value)} value={reply} placeholder="Write your reply..." />
+                    </div>
+                    <div className="form-submit">
+                        <button><img src="/icons/send.svg" /></button>
+                    </div>
+                </form>
+                <div className="comments">
+                    <div id="lines"></div>
+                    {currentPost.comments ? <p id="replies">Replies</p> : null}
+                    {currentPost.comments.reverse().map((comment, index) => {
+                        return <Comment comment={comment} key={index}/>
+                    })}
+                </div>
+            </div> : null}
         </div>
     )
 }

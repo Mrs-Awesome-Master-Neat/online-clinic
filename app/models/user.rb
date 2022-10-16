@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    include OrderableByTimestamp
     has_secure_password
     validates :user_name, uniqueness:{case_sensitive: false}
 
@@ -11,4 +12,5 @@ class User < ApplicationRecord
     has_many :posts
 
     has_many :liked_posts, ->{distinct}, through: :likes, source: :post
+    
 end

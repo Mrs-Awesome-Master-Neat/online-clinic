@@ -3,7 +3,6 @@ class UsersController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
-    before_action :authorize
     skip_before_action :authorize, only: [:create]
 
     def create
@@ -64,10 +63,4 @@ class UsersController < ApplicationController
     def all_params
         params.permit :profession, :started_work,:place_of_work,:first_name, :last_name, :date_of_birth, :gender, :email,:user_name,:password,:password_confirmation
     end
-
-    def authorize
-        render json: {error: "Not authorized"}, status: :unauthorized unless session.include? :user_id
-    end
-
-
 end

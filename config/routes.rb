@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :fields, only: [:index, :show]
   resources :diseases, only:[:index, :show]
   
-  resources :comments
+  resources :comments, only:[:create,:update,:destroy]
   resources :user_posts, only: [:create, :update]
   resources :posts
 
