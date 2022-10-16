@@ -7,12 +7,12 @@ export default function MyGroups({ getGroup, groups }) {
 
     function Group({ index, groupName, groupMembers, group }) {
         return (
-            <div className="group" onClick={getGroup(group.id)} style={{cursor:"pointer"}}>
+            <div className="group"  style={{cursor:"pointer"}}>
                 <div className="group-details">
                     <p>{index}. </p>
                     <img src={"https://i.pinimg.com/originals/28/c1/46/28c1468b745f52d24f754738dbfb24fc.jpg"} alt={groupName} />
                     <div>
-                        <p>{groupName}</p>
+                        <p onClick={getGroup(group.id)}>{groupName}</p>
                         <p id="group-members">{groupMembers} members</p>
                     </div>
                 </div>
@@ -25,7 +25,7 @@ export default function MyGroups({ getGroup, groups }) {
                 <p>My Connect Groups</p>
             </div>
             <div className="groups">
-                {groups.slice(0, 5).map((group, index) => {
+                {groups.map((group, index) => {
                     return (
                         <Group
                             group={group}

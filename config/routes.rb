@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'normal_users', to: "users#users_index"
   get 'professionals', to: "users#professionals_index"
   get 'me', to: "users#show"
+  
   post 'users', to: "users#create"
   patch 'normal_users/:id', to: "users#update_users"
   patch 'normal_users/upgrade/:id', to: "users#upgrade"

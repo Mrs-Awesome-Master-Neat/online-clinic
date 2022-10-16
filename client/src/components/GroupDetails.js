@@ -1,4 +1,4 @@
-export default function GroupDetails({ group, myGroups }) {
+export default function GroupDetails({ group}) {
 
     return (
         <div className="group-more">

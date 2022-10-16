@@ -28,7 +28,7 @@ export default function Discover({ onSubscribe, groups }) {
                 <p>Discover Amazing Groups</p>
             </div>
             <div className="groups">
-                {groups.slice(0, 5).map((group, index) => {
+                {groups.map((group, index) => {
                     return (
                         <Group
                             group={group}

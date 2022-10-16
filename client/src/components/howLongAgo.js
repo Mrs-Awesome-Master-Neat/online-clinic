@@ -19,16 +19,13 @@ function howLongAgo(time_string) {
     } else if (t > 60 && t < (24 * 60)) {
         return `${Math.round(t / 60)} hr`
     } else if (t > (24 * 60) && t < (24 * 60 * 7)) {
-        return `${Math.round(t / (60 * 24 * 7))}wk`
+        return `${Math.round(t / (60 * 24))}d`
     }
-    else if (t > (24 * 60 * 7) && t < (24 * 60 * 4)) {
+    else if (t > (24 * 60 * 7*4) && t < (24 * 60 *7* 12*4)) {
         return `${Math.round(t / (60 * 24 * 30))}mo`
     }
-    else if (t > (24 * 60 * 7 * 4) && t < (24 * 60 * 50 * 7)) {
-        return `${Math.round(t / (60 * 24 * 7))}wk`
-    }
     else {
-        return `${Math.round(t / (60 * 24 * 50 * 7))}yr`
+        return `${Math.round(t / (60 * 24 * 52 * 7))}yr`
     }
 }
 

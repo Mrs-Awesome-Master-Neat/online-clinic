@@ -13,32 +13,33 @@ import MyGroups from "./MyGroups";
 export default function Dashboard({ user }) {
     const [isDesktop, SetIsDesktop] = useState(document.documentElement.clientWidth > 600)
     const [error, setError] = useState(null)
-    const [myGroups, setMyGroups] = useState([])
+    const [myGroups, setMyGroups] = useState(user.diseases)
     const [activeGroup, setActiveGroup] = useState(null)
-    const [allGroups, setAllGroups] = useState([])
+    const [groupsNotIn, setGroupsNotIn] = useState(user.groups_not_subscribed)
     const [likedPosts,setLikedPosts]=useState(user.liked_posts)
-
-    useEffect((() => {
-        fetch("/diseases")
-            .then(r => r.json())
-            .then(setAllGroups)
-    }), [])
-
-    useEffect((() => {
-        getGroup(user.diseases[1].id)
-    }), [])
-
-    function getGroup(id){
-        fetch(`/diseases/${id}`)
-        .then(r=>r.json())
-        .then(setActiveGroup)
-    }
 
     window.addEventListener("resize", () => {
         SetIsDesktop(isDesktop => document.documentElement.clientWidth > 600 ? true : false)
     }, true)
 
-
+    console.log(activeGroup);
+    useEffect((()=>{
+        fetch(`/diseases/${user.diseases[0].id}`).then(r=>{
+            if(r.ok){
+                r.json().then(setActiveGroup)
+            }
+        }
+        )
+    }),[])
+    function getGroup(id){
+        fetch(`/diseases/${id}`).then(console.log)
+        .then(r=>{
+            if(r.ok){
+                console.log(r);
+                r.json().then(setActiveGroup)
+            }
+        })
+    }
     function onSubscribe(groupId) {
         fetch("/subscribes", {
             method: "POST",
@@ -58,8 +59,7 @@ export default function Dashboard({ user }) {
             }
         })
     }
-    const unsubscribed = allGroups.filter(g => !(user.diseases.map(gr => gr.id).includes(g.id)))
-    return (
+        return (
         <div className="dash-container">
             <TopBar user={user} />
             <div className="dashboard">
@@ -69,7 +69,7 @@ export default function Dashboard({ user }) {
                        return <Post setLikedPosts={setLikedPosts} likedPosts={likedPosts} key={index} post={post}/>
                     })}
                 </div>
-                    {isDesktop ? <Discover onSubscribe={onSubscribe} groups={allGroups} /> : <NavBar />}
+                    {isDesktop ? <Discover onSubscribe={onSubscribe} groups={groupsNotIn} /> : <NavBar />}
                 </Route>
                 <Route exact path="/dashboard/profile">
                     
@@ -78,21 +78,15 @@ export default function Dashboard({ user }) {
                 <Route exact path={"/dashboard/connect"}>
                    {activeGroup? <div style={{ display: "flex" }}>
                         <div style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
-                            <GroupDetails group={activeGroup}/>
-                            <h3>Popular Posts</h3>
-                            {activeGroup.posts.map((post,index)=> {
-                                return <Post setLikedPosts={setLikedPosts} likedPosts={likedPosts} post={post} key={index} />
-                            })}
+                           {<GroupDetails group={activeGroup}/>}
+                           <p>Posts</p>
+                           {activeGroup.posts.map((post,index)=>{
+                            return <Post post={post} likedPosts={likedPosts} setLikedPosts={setLikedPosts} />
+                           })}
                         </div>
                      
                         {<MyGroups getGroup={getGroup} groups={user.diseases} />}
                     </div>:null}
-                    {/* {activeGroup? <div> */}
-                    {/* <GroupDetails activeGroup={activeGroup}/> */}
-                    {/* <CreatePost /> */}
-                    {/* <Post /> */}
-                    {/* <Post /> */}
-                    {/* </div>:null} */}
                 </Route>
 
 
