@@ -129,5 +129,5 @@ export default function Post({ post, likedPosts, setLikedPosts }) {
                 </div>
             </div> : null}
         </div>
-    )
+    );
 }
