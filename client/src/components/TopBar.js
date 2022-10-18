@@ -36,7 +36,7 @@ export default function TopBar({ user }) {
                     <div className="top-logout">
                         <p>signed in as {user.user_name}</p>
                         <button className="logout-cancel" onClick={handleLogout}>Logout <img src="/icons/logout.svg" alt="logout" /></button>
-                        <button className="logout-cancel" onClick={()=>setsShowLogout(false)}>Cancel <img src="/icons/cancel.svg"/></button>
+                        <button className="logout-cancel" onClick={()=>setsShowLogout(false)}>Cancel <img src="/icons/cancel.svg" alt="cancelogout"/></button>
                     </div>
                     : null}
             </div>
